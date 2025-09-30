@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit PDF Content</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; }
+    label { display: block; margin-top: 15px; }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+    button, .download-btn {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Edit PDF Content</h1>
+  <form id="editForm" action="/download/edited" method="GET" target="_blank">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" value="{{title}}" required />
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" required>{{message}}</textarea>
+
+    <button type="submit">Download Edited PDF</button>
+  </form>
+</body>
+</html>

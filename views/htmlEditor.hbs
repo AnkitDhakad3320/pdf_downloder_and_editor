@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML + CSS Editor to PDF</title>
+  <style>
+    body { font-family: Arial; margin: 2rem; }
+    textarea { width: 100%; height: 150px; margin-bottom: 1rem; font-family: monospace; }
+    iframe { width: 100%; height: 300px; border: 1px solid #ccc; margin-top: 1rem; }
+    .btn { padding: 10px 15px; background: #3498db; color: white; border: none; cursor: pointer; margin-right: 0.5rem; }
+    .btn:hover { background: #2980b9; }
+    .form-group{ display:flex; justify-content: space-between; gap:10px; width: 90vw !important;}
+    .container{width: 100%;}
+  </style>
+</head>
+<body>
+  <h1>Write HTML + CSS → Preview → Download as PDF</h1>
+
+  <!-- Form for download -->
+  <form action="/download/html" method="POST">
+
+    <div class="form-group">
+      <div class="container">
+    <label><b>HTML Code:</b></label><br>
+    <textarea name="html" id="htmlInput" placeholder="<h1>Hello World</h1>"></textarea>
+      </div>
+            <div class="container">
+    <label><b>CSS Code:</b></label><br>
+    <textarea name="css" id="cssInput" placeholder="h1 { color: red; }"></textarea>
+      </div>
+    </div>
+
+
+
+    <br>
+    <button class="btn" type="button" id="previewBtn">Preview</button>
+    <button class="btn" type="submit">Download as PDF</button>
+  </form>
+
+  <h2>Live Preview:</h2>
+  <iframe id="previewFrame" sandbox="allow-same-origin allow-scripts"></iframe>
+
+  <script>
+    const htmlInput = document.getElementById('htmlInput');
+    const cssInput = document.getElementById('cssInput');
+    const previewFrame = document.getElementById('previewFrame');
+    const previewBtn = document.getElementById('previewBtn');
+
+    previewBtn.addEventListener('click', function(){
+      const html = htmlInput.value;
+      const css = cssInput.value;
+
+      // Full document with HTML + CSS
+      const fullHtml = `
+        <html>
+          <head>
+            <style>${css}</style>
+          </head>
+          <body>${html}</body>
+        </html>
+      `;
+
+      // Render inside iframe
+      previewFrame.srcdoc = fullHtml;
+    });
+  </script>
+</body>
+</html>

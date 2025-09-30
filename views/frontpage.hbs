@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{title}}</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            text-align: center;
+            padding: 100px 50px;
+            background-color: #fdf6e3;
+            color: #333;
+        }
+        .cover-container {
+            border: 2px solid #333;
+            padding: 50px;
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+        }
+        h1.title {
+            font-size: 3em;
+            margin-bottom: 0.2em;
+            font-weight: bold;
+        }
+        h2.subtitle {
+            font-size: 1.5em;
+            font-style: italic;
+            margin-bottom: 1.5em;
+            color: #666;
+        }
+        .author {
+            font-size: 1.3em;
+            margin: 2em 0 1em 0;
+            font-weight: 600;
+        }
+        .publisher {
+            margin-top: 2em;
+            font-size: 1em;
+            color: #555;
+        }
+        .footer {
+            margin-top: 4em;
+            font-size: 0.9em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-container">
+        <h1 class="title">{{title}}</h1>
+        {{#if subtitle}}
+        <h2 class="subtitle">{{subtitle}}</h2>
+        {{/if}}
+
+        {{#if author}}
+        <div class="author">
+            Written by:<br />
+            <strong>{{author}}</strong>
+        </div>
+        {{/if}}
+
+
+        {{#if publisher}}
+        <div class="publisher">
+            Published by: {{publisher}}
+        </div>
+        {{/if}}
+
+        {{#if edition}}
+        <div class="publisher">
+            Edition: {{edition}}
+        </div>
+        {{/if}}
+
+        {{#if year}}
+        <div class="footer">
+            © {{year}}
+        </div>
+        {{/if}}
+
+        {{#if message}}
+        <div class="footer">
+             {{message}}
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>
