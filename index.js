@@ -3,6 +3,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 
 const pdfRoutes = require('./routes/pdfRoutes');
+const urlScreenshotRoutes = require('./routes/urlScreenshotRoutes');
 
 const app = express();
 const PORT = 3000;
@@ -23,6 +24,7 @@ app.use(express.json());
 
 // Routes
 app.use('/', pdfRoutes);
+app.use('/url', urlScreenshotRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

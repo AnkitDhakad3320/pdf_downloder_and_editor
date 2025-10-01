@@ -1,31 +1,61 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>{{title}}</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 2rem; }
-        h1 { color: #2c3e50; }
-        .download-btn {
-            padding: 10px 15px;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+      body { font-family: Arial, sans-serif; padding: 2rem; box-sizing: border-box; overflow-x: hidden; } h1 { color:
+      #2c3e50; } .download-btn { padding: 10px 15px; background: #3498db; color:
+      white; text-decoration: none; border-radius: 5px; } .preview-box { width:
+      400px; height: 300px; border: 2px solid #ccc; overflow: hidden;
+      border-radius: 8px; } .preview-box img { width: 100%; display: block; }
+      .container { display: flex; justify-content: center; align-items: center;
+      gap: 20px; } @media (max-width: 768px) { .container { flex-direction:
+      column; } }
+      .web-container{width: 800px; height:500px; margin:20px auto; border:2px solid #ccc; border-radius:8px; overflow:hidden;}
+      .btn-container{text-align: center;}
     </style>
-</head>
-<body>
+  </head>
+  <body>
+
     <div class="container">
-
-    <h1>{{title}}</h1>
-    <p>{{message}}</p>
-
-
+      <div class="preview-box">
+        <a href="https://ankitdhakadportfolio.netlify.app/" target="_blank">
+          <img
+            src="http://localhost:3000/url/screenshot?url=https://ankitdhakadportfolio.netlify.app/"
+            alt="Website Preview"
+          />
+        </a>
+      </div>
+      <div class="container">
+        <div class="preview-box">
+          <a href="https://zxsis.com" target="_blank">
+            <img
+              src="http://localhost:3000/url/screenshot?url=https://zxsis.com/"
+              alt="Website Preview"
+            />
+          </a>
+        </div>
+      </div>
     </div>
-    <a class="download-btn" href="/download">Download This Page as PDF</a>
-    <a class="download-btn" href="/edit">TO EDIT THE PDF</a>
-    <a class="download-btn" href="/edit-html">TO EDIT THE HTML</a>
+    <div
+      class="web-container"
+    >
+      <a href="https://zxsis.com" target="_blank">
+        <iframe
+          src="https://zxsis.com"
+          width="100%"
+          height="100%"
+          style="border:none;"
+        ></iframe>
+      </a>
+    </div>
+    <div class="btn-container">
+      <h1>{{title}}</h1>
+      <p>{{message}}</p>
 
-</body>
+      <a class="download-btn" href="/download">Download This Page as PDF</a>
+      <a class="download-btn" href="/edit">TO EDIT THE PDF</a>
+      <a class="download-btn" href="/url/edit-html">TO EDIT THE HTML</a>
+    </div>
+  </body>
 </html>
