@@ -50,11 +50,15 @@ exports.urlImageGenerator = async (req, res) => {
       ],
   });
   const page = await browser.newPage();
+    await page.setUserAgent(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+      "(KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+    );
   await page.goto(url, { 
       waitUntil: "domcontentloaded", // instead of networkidle2
       timeout: 60000,
    });
-  const screenshotBuffer = await page.screenshot({ type: "png" });
+  const screenshotBuffer = await page.screenshot({ type: "png" ,fullPage: false });
   await browser.close();
 
   res.set("Content-Type", "image/png");
