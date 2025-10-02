@@ -8,12 +8,24 @@ exports.generateHtmlPdf =  async (req, res) => {
   const { html } = req.body;
 
   try {
-    const browser = await puppeteer.launch({ headless: 'new' });
+    const browser = await puppeteer.launch({
+         headless: "new",
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--no-zygote",
+      ],
+      });
     const page = await browser.newPage();
 
-    await page.setContent(html, { waitUntil: 'networkidle0' });
+    await page.setContent(html, { 
+        waitUntil: "domcontentloaded", // instead of networkidle2
+      timeout: 20000,
+     });
+     await browser.close();
     const pdfBuffer = await page.pdf({ format: 'A4' });
-    await browser.close();
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'attachment; filename="custom-html.pdf"');
     res.send(pdfBuffer);
@@ -28,12 +40,21 @@ exports.urlImageGenerator = async (req, res) => {
   if (!url) return res.status(400).send("URL required");
 
   const browser = await puppeteer.launch({
-    headless: "new",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"]
+      headless: "new",
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--no-zygote",
+      ],
   });
   const page = await browser.newPage();
-  await page.goto(url, { waitUntil: "networkidle2" });
-  const screenshotBuffer = await page.screenshot({ fullPage: false });
+  await page.goto(url, { 
+      waitUntil: "domcontentloaded", // instead of networkidle2
+      timeout: 60000,
+   });
+  const screenshotBuffer = await page.screenshot({ type: "png" });
   await browser.close();
 
   res.set("Content-Type", "image/png");
