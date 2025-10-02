@@ -8,7 +8,6 @@ const urlScreenshotRoutes = require('./routes/urlScreenshotRoutes');
 const app = express();
 const PORT = 3000;
 
-// Handlebars setup
 const hbs = exphbs.create({
   extname: '.hbs',
   layoutsDir: false,

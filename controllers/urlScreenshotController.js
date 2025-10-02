@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 
 exports.renderHtmlEditer =  (req, res) => {
-    console.log('Rendering HTML editor...');
     res.render('htmlEditor');  
 };
 

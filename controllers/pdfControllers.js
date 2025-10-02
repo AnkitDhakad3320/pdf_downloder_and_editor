@@ -16,7 +16,6 @@ exports.editPdf = (req, res) => {
 };
 
 exports.generatePDF = async (req, res) => {
-  console.log('Generating PDF...');
   try {
     const html = await renderHTML('frontpage', {
       title: "The Forgotten Career",
