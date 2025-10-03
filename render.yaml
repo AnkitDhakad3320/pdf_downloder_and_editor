@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: puppeteer-service
+    runtime: node
+    plan: free
+    buildCommand: |
+      apt-get update
+      apt-get install -y wget gnupg ca-certificates
+      apt-get install -y chromium chromium-common chromium-driver
+      npm install
+    startCommand: node server.js
